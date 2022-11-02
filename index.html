@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html> 
+<head>
+    <title>Countdown</title>
+    <meta charset="utf-8">
+
+</head>
+<body>
+    <h1>Countdown</h1>
+    <div id="countdown"></div>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+    <button id="reset">Reset</button>
+    <button id="add">Add 10 seconds</button>
+    <button id="subtract">Subtract 10 seconds</button>
+    <script>
+        var countdown = document.getElementById("countdown");
+        var start = document.getElementById("start");
+        var stoper = document.getElementById("stop");
+        var reset = document.getElementById("reset");
+        var add = document.getElementById("add");
+        var subtract = document.getElementById("subtract");
+        var seconds = 300;
+
+        function timer() {
+            minutes = parseInt(seconds / 60);
+            remainingSeconds = seconds % 60;
+            if (remainingSeconds < 10) {
+                remainingSeconds = "0" + remainingSeconds;
+            }
+            countdown.innerHTML = minutes + ":" + remainingSeconds;
+            if (seconds == 0) {
+                clearInterval(countdownTimer);
+                countdown.innerHTML = "Done";
+            } else {
+                seconds--;
+            }
+        }
+
+        function startTimer() {
+            countdownTimer = setInterval('timer()', 1000);
+        }
+
+        function stopTimer() {
+            clearInterval(countdownTimer);
+        }
+
+        function resetTimer() {
+            clearInterval(countdownTimer);
+            seconds = 300;
+            countdown.innerHTML = "5:00";
+        }   
+
+        function addTen() {
+            seconds += 10;
+        }
+
+        function subtractTen() {
+            seconds -= 10;
+        }
+
+        start.addEventListener("click", startTimer);
+        stoper.addEventListener("click", stopTimer);
+        reset.addEventListener("click", resetTimer);
+        add.addEventListener("click", addTen);
+        subtract.addEventListener("click", subtractTen);
+    </script>
+</body>
+</html>
