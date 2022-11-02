@@ -74,11 +74,11 @@
         }   
 
         function addTen() {
-            seconds += 10;
+            seconds += 15;
         }
 
         function subtractTen() {
-            seconds -= 10;
+            seconds -= 15;
         }
 
         start.addEventListener("click", startTimer);
@@ -86,6 +86,27 @@
         reset.addEventListener("click", resetTimer);
         add.addEventListener("click", addTen);
         subtract.addEventListener("click", subtractTen);
+
+        //assign the function to keydown event
+        document.onkeydown = function(e) {
+            switch (e.keyCode) {
+                case 32:
+                    startTimer();
+                    break;
+                case 83:
+                    stopTimer();
+                    break;
+                case 82:
+                    resetTimer();
+                    break;
+                case 39:
+                    addTen();
+                    break;
+                case 37:
+                    subtractTen();
+                    break;
+            }
+        };
     </script>
 </body>
 </html>
